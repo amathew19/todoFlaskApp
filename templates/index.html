@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <link rel="icon" type="image/x-icon" sizes="32x32" href="/images/favicon-32x32.png"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <title>Todo Application</title>
+    <style>
+        * {
+            font-family: "Roboto Slab", serif;
+            box-sizing: border-box;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 25px;
+            margin-bottom: 4px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            margin-top: 0;
+            margin-bottom: 7px;
+        }
+
+        button {
+            height: 2.3rem;
+            width: 3.0rem;
+            text-align: center;
+        }
+
+        button:active {
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <form>
+        <h1>Todo List</h1>
+        <p>With Flask and MongoDB</p>
+        <h4>Enter a task</h4>
+        <input id="taskField"  placeholder="Enter task here"/>
+        <button id="taskButton" formmethod="post" type="submit">Add</button>
+    </form>
+</body>
+</html>
