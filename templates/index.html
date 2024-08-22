@@ -14,8 +14,10 @@
             box-sizing: border-box;
         }
 
-        form {
-            text-align: center;
+        #mainContainer {
+            height: auto;
+            width: 400px;
+            margin-left: 150px;
         }
 
         h1 {
@@ -23,36 +25,115 @@
             margin-bottom: 4px;
         }
 
-        p {
+        #headerTitle {
             margin-top: 0;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         h4 {
-            margin-top: 0;
-            margin-bottom: 7px;
+            margin-top: 25px;
+            margin-bottom: 0;
+        }
+
+        form {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            height: 100px;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        #taskFieldContainer label{
+            padding-right: 10px;
+        }
+
+        form input {
+            width: fit-content;
         }
 
         button {
-            height: 2.3rem;
-            width: 3.0rem;
+            height: 2.0rem;
+            width: 2.7rem;
             text-align: center;
+            border-radius: 5px;
+            margin-bottom: 15px;
         }
+
+        /*button:hover {
+            transform: scale(1.2%);
+            background-color: black;
+            color: white;
+        }*/
 
         button:active {
             background-color: black;
             color: white;
         }
 
+        ul {
+            padding-left: 25px;
+        }
+
+        form p {
+            margin-bottom: 0;
+        }
+
+        #degreeContainer {
+            display: flex;
+            width: 350px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        #degreeContainer p {
+            align-self: center;
+            padding-right: 50px;
+        }
+
+        #degreeSubContainer {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+        }
+
+        #todoList {
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
-    <form>
-        <h1>Todo List</h1>
-        <p>With Flask and MongoDB</p>
-        <h4>Enter a task</h4>
-        <input id="taskField"  placeholder="Enter task here"/>
-        <button id="taskButton" formmethod="post" type="submit">Add</button>
-    </form>
+    <div id="mainContainer">
+        <h1>Simple Todo List</h1>
+        <p id="headerTitle">With Flask and MongoDB</p>
+        <form method="post">
+            <div id="taskFieldContainer">
+                <label for="content">What's the todo? </label>
+                <input id="taskField"  name="content" placeholder="Enter task here"/>
+            </div>
+            <div id="degreeContainer">
+                <p><label for="degree">Degree</label></p>
+                <div id="degreeSubContainer">
+                    <div>
+                        <input id="degree-0" name="degree" required type="radio" value="Important"/>
+                        <label for="degree-0">Important</label>
+                    </div>
+
+                    <div>
+                        <input id="degree-1" name="degree" required type="radio" value="Not_Important"/>
+                        <label for="degree-1">Not Important</label>
+                    </div>
+                </div>
+            </div>
+            <button id="taskButton" formmethod="post" type="submit">Add</button>
+        </form>
+        <h4>Todo's</h4>
+        {% for todo in todos %}
+        <div class="todo">
+            <p>{{ todo['content'] }} <i>({{ todo['degree']}})</i></p>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
