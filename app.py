@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, request
+from bson.objectid import ObjectId
 from pymongo import MongoClient
 import config
 
@@ -20,6 +21,10 @@ def main():
     all_todos=todos.find()
     return render_template('index.html', todos=all_todos)
 
+@app.post('/<id>/delete')
+def delete(id):
+    todos.delete_one({"_id": ObjectId(id)})
+    return redirect(url_for('main'))
 
 if __name__ == '__main__':
     app.run()
