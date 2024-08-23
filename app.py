@@ -19,7 +19,9 @@ def main():
         return redirect(url_for('main'))
 
     all_todos=todos.find()
-    return render_template('index.html', todos=all_todos)
+    todos_count = todos.count_documents({})
+
+    return render_template('index.html', todos=all_todos, todos_count=todos_count)
 
 @app.post('/<id>/delete')
 def delete(id):
